@@ -4,7 +4,7 @@ Run your tests on Hetzner cloud with the help of gitlab ci and the [docker-machi
 
 ## Usage
 
-Use this image instead of the `gitlab/gitlab-runner` image and set `MachineDriver` to `hetzner` in your runner configuration.
+Use [this image](https://hub.docker.com/r/mawalu/hetzner-gitlab-runner) instead of the `gitlab/gitlab-runner` image and set `MachineDriver` to `hetzner` in your runner configuration.
 
 Example config.toml:
 

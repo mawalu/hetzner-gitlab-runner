@@ -41,6 +41,10 @@ check_interval = 0
     ]
 ```
 
+## Versions
+
+Currently this image is build using the `gitlab/gitlab-runner:latest` image and the latest docker-machine hetzner plugin. If you need builds for another version feel free to open an PR.
+
 ## License 
 
 MIT

@@ -1,6 +1,6 @@
 # Gitlab ci runner with hetzner docker machine plugin
 
-Run your ci jobs on Hetzner cloud with the help of gitlab ci and the [docker-machine-driver-hetzner](https://github.com/JonasProgrammer/docker-machine-driver-hetzner).
+Run your ci jobs on Hetzner cloud with the help of gitlab ci and the [docker-machine-driver-hetzner](https://github.com/JonasProgrammer/docker-machine-driver-hetzner). You can follow the official [gitlab docs](https://docs.gitlab.com/runner/executors/docker_machine.html) for configuring the gitlab ci runner with docker machine, just use this image as a drop in replacement for `gitlab/gitlab-runner`. See the example config.toml below for the hetzner specific docker machine options.
 
 ## Usage
 

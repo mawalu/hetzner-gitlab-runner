@@ -1,12 +1,16 @@
-# Gitlab ci runner with hetzner docker machine plugin
+# Auto-scale CI jobs with Gitlab Runner and the Hetzner Docker Machine driver
 
-Run your ci jobs on Hetzner cloud with the help of gitlab ci and the [docker-machine-driver-hetzner](https://github.com/JonasProgrammer/docker-machine-driver-hetzner). You can follow the official [gitlab docs](https://docs.gitlab.com/runner/executors/docker_machine.html) for configuring the gitlab ci runner with docker machine, just use this image as a drop in replacement for `gitlab/gitlab-runner`. See the example config.toml below for the hetzner specific docker machine options.
+With this patched GitLab Runner image, you can auto-scale your CI jobs on Hetzner Cloud. The patch installs the [Hetzner Docker Machine driver](https://github.com/JonasProgrammer/docker-machine-driver-hetzner) and is available on [Docker Hub](https://hub.docker.com/r/mawalu/hetzner-gitlab-runner).
+
+You can follow the official [GitLab docs](https://docs.gitlab.com/runner/executors/docker_machine.html) for configuring the GitLab Runner with docker machine, just use this image as a drop in replacement for `gitlab/gitlab-runner`.
+
+See the example `config.toml` and `docker-compose.yaml` below for the hetzner specific docker machine options.
 
 ## Usage
 
 Use [this image](https://hub.docker.com/r/mawalu/hetzner-gitlab-runner) instead of the `gitlab/gitlab-runner` image and set `MachineDriver` to `hetzner` in your runner configuration.
 
-Example config.toml:
+Example `config.toml`:
 
 ```toml
 concurrent = 1
@@ -41,11 +45,22 @@ check_interval = 0
     ]
 ```
 
+Example `docker-compose.yaml`:
+
+```yaml
+version: "3.8"
+
+services:
+  hetzner-runner:
+    image: mawalu/hetzner-gitlab-runner:latest
+    volumes:
+      - "./hetzner_config:/etc/gitlab-runner"
+```
+
 ## Versions
 
 Currently this image is build using the `gitlab/gitlab-runner:latest` image and the latest docker-machine hetzner plugin. If you need builds for another version feel free to open an PR.
 
-## License 
+## License
 
 MIT
-

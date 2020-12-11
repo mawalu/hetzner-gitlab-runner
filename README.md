@@ -57,6 +57,22 @@ services:
       - "./hetzner_config:/etc/gitlab-runner"
 ```
 
+### Docker Errors
+
+If you face docker problems at runtime (such as the one below), you can specify a Docker version in the `MachineOptions`.
+
+```toml
+ MachineOptions = [
+      "engine-install-url=https://releases.rancher.com/install-docker/19.03.9.sh",
+    ]
+```
+
+Possible error that is caused by Docker:
+
+```bash
+ERROR: Error creating machine: Error running provisioning: Unable to verify the Docker daemon is listening: Maximum number of retries (10) exceeded  driver=hetzner name=runner-xxx-xxx operation=create
+```
+
 ## Versions
 
 Currently this image is build using the `gitlab/gitlab-runner:latest` image and the latest docker-machine hetzner plugin. If you need builds for another version feel free to open an PR.

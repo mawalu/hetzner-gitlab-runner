@@ -73,6 +73,8 @@ Possible error that is caused by Docker:
 ERROR: Error creating machine: Error running provisioning: Unable to verify the Docker daemon is listening: Maximum number of retries (10) exceeded  driver=hetzner name=runner-xxx-xxx operation=create
 ```
 
+See [this issue](https://github.com/docker/machine/issues/4858) for more information.
+
 ## Versions
 
 Currently this image is build using the `gitlab/gitlab-runner:latest` image and the latest docker-machine hetzner plugin. If you need builds for another version feel free to open an PR.

@@ -10,6 +10,18 @@ See the example `config.toml` and `docker-compose.yaml` below for the hetzner sp
 
 Use [this image](https://hub.docker.com/r/mawalu/hetzner-gitlab-runner) instead of the `gitlab/gitlab-runner` image and set `MachineDriver` to `hetzner` in your runner configuration.
 
+From [Gitlab](https://docs.gitlab.com/ee/api/runners.html)
+> There are two tokens to take into account when connecting a runner with GitLab.  
+  `registration_token` -	Token used to register the runner. It can be obtained through GitLab.  
+  `authentication_token` - Token used to authenticate the runner with the GitLab instance. 
+
+The `config.toml` uses the authentication_token which can be obtained by running;  
+```
+curl --request POST "https://gitlab.com/api/v4/runners" --form "token=df5T4Zxfod71HbWchyuc"
+
+{"id":10,"token":"Z9sHakc9KtEg2H-2S47A"}
+```
+
 Example `config.toml`:
 
 ```toml
@@ -22,7 +34,7 @@ check_interval = 0
 [[runners]]
   name = "docker-machine"
   url = "https://gitlab.com"
-  token = "your-token"
+  token = "<authentication_token>"
   executor = "docker+machine"
   [runners.docker]
     tls_verify = false
